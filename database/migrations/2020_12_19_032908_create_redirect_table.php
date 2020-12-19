@@ -13,7 +13,7 @@ class CreateRedirectTable extends Migration
      */
     public function up()
     {
-        Schema::create('redirect', function (Blueprint $table) {
+        Schema::create('redirects', function (Blueprint $table) {
             $table->id();
             $table->string('url');
             $table->integer('count');
