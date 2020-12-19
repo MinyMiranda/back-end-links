@@ -38,4 +38,23 @@ class Redirect extends Model
         $link = Link::find($request['link_id']);
         Redirect::create($request)->link()->associate($link);
     }
+
+     /**
+     * Retorna Links filhos relacionado ao link pai
+     *  
+     * @return \App\Redirect
+     */
+    public static function getLink($url)
+    {
+        return Redirect::where('url',$url)->with('redirect')->get();
+    }
+
+    /**
+     * Decrementa 1 do contador 
+     *  
+     * @param integer $id
+     */
+    public static function decrementCount($id){
+        Redirect::find($id)->decrement('count', 1);
+    }
 }

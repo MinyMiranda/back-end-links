@@ -31,8 +31,22 @@ class Link extends Model
      *  
      * @return \App\Link
      */
-    public static function getLink()
+    public static function getAllLinks()
     {
         return Link::with('redirect')->get();
+    }
+
+     /**
+     * Retorna Redirects relacionadas a url enviada
+     *  
+     * @return \App\Link
+     */
+    public static function getLink($url)
+    {
+        $link=Link::firstWhere('url',$url);
+        if(isset($link)){
+            return $link->redirect()->get();
+        }
+        return $link;
     }
 }
