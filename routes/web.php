@@ -28,3 +28,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->delete('/delete/{id}',  ['uses' => 'RedirectController@destroy']);
     });
 });
+
+$router->get('/{route}',  ['uses' => 'RedirectController@routes']);
+
+
