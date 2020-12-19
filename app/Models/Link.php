@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Redirect;
 class Link extends Model 
 {
 
@@ -15,4 +15,13 @@ class Link extends Model
     protected $fillable = [
         'url'
     ];
+
+     /**
+     * Relacionamento com os links de redirecionamento
+     * 
+     */
+    public function redirect()
+    {
+        return $this->hasMany(Redirect::class);
+    }
 }
