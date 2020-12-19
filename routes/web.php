@@ -15,7 +15,16 @@
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('/',  ['as' => 'home', 'uses' => 'HomeController@index']);
-    $router->post('/links/store',  ['as' => 'home', 'uses' => 'LinkController@store']);
-    $router->put('/links/update/{id}',  ['as' => 'home', 'uses' => 'LinkController@update']);
-    $router->delete('/links/delete/{id}',  ['as' => 'home', 'uses' => 'LinkController@destroy']);
+
+    $router->group(['prefix' => 'links'], function () use ($router) {
+        $router->post('/store',  ['uses' => 'LinkController@store']);
+        $router->put('/update/{id}',  ['uses' => 'LinkController@update']);
+        $router->delete('/delete/{id}',  ['uses' => 'LinkController@destroy']);
+    });
+
+    $router->group(['prefix' => 'redirects'], function () use ($router) {
+        $router->post('/store',  ['uses' => 'RedirectController@store']);
+        $router->put('/update/{id}',  ['uses' => 'RedirectController@update']);
+        $router->delete('/delete/{id}',  ['uses' => 'RedirectController@destroy']);
+    });
 });
