@@ -45,6 +45,6 @@ class LinkController extends Controller
     public function destroy($id)
     {
         Link::find($id)->delete();
-        return response()->json('Deletado com sucesso', 200);
+        return response()->json(['message'=>'Deletado com sucesso'], 200);
     }
 }
