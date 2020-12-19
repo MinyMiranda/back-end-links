@@ -45,6 +45,23 @@ class RedirectController extends Controller
     public function destroy($id)
     {
         Redirect::find($id)->delete();
-        return response()->json(['message'=>'Deletado com sucesso'], 200);
+        return response()->json(['message' => 'Deletado com sucesso'], 200);
+    }
+
+    /**
+     * Redireciona para os links disponíveis da rota
+     *  
+     * @param string $route
+     * @return mixed
+     */
+    public function routes($route)
+    {
+        $link = new RedirectClass;
+        $link = $link->redirectLink($route);
+        if (isset($link)) {
+            return redirect()->route($link);
+        } else {
+            return response()->json(['message' => 'Rota inválida'], 404);
+        }
     }
 }
