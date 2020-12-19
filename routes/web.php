@@ -13,6 +13,9 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('/',  ['as' => 'home', 'uses' => 'HomeController@index']);
+    $router->post('/links/store',  ['as' => 'home', 'uses' => 'LinkController@store']);
+    $router->put('/links/update/{id}',  ['as' => 'home', 'uses' => 'LinkController@update']);
+    $router->delete('/links/delete/{id}',  ['as' => 'home', 'uses' => 'LinkController@destroy']);
 });

@@ -25,7 +25,7 @@ class LinkClass
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
         }
-        $author = Link::create($request->all());
+        Link::create($request->all());
         return response()->json(['message'=>'Sucesso ao criar'], 201);
     }
 
@@ -46,8 +46,7 @@ class LinkClass
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
         }
-        $author = Link::find($id);
-        $author->update($request->all());
+        Link::find($id)->update($request->all());
         return response()->json(['message' => 'Succeso ao editar!'], 200);
     }
 }
