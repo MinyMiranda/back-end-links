@@ -10,7 +10,7 @@ class RedirectController extends Controller
 {
 
     /**
-     * Retorna todos os Links Juntamento com os links filhos
+     * Retorna todos os links filhos relacionado áquele link pai
      *  
      * @return string JSON
      */
@@ -40,12 +40,11 @@ class RedirectController extends Controller
      * @param Illuminate\Http\Request $request
      * @return string JSON
      */
-    public function update($id, Request $request)
+    public function update(Request $request)
     {
-        return $request;
 
         $update = new RedirectClass;
-        return  $update->updateLink($id, $request);
+        return  $update->updateLink($request);
     }
 
     /**

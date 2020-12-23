@@ -29,11 +29,10 @@ class LinkController extends Controller
      * @param Illuminate\Http\Request $request
      * @return string JSON
      */
-    public function update($id,Request $request)
+    public function update(Request $request)
     {
-        return $request;
         $update = new LinkClass;
-        return  $update->updateLink($id,$request);
+        return  $update->updateLink($request);
     }
 
     /**

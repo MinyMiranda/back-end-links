@@ -19,7 +19,7 @@ class LinkClass
         $validator = Validator::make(
             $request->all(),
             [
-                'url' => 'required|string',
+                'url' => 'required|string|unique:links',
             ]
         );
         if ($validator->fails()) {
@@ -35,12 +35,12 @@ class LinkClass
      * @param Illuminate\Http\Request  $request
      * @return string JSON
      */
-    public function updateLink($id,$request)
+    public function updateLink($request)
     {
         $validator = Validator::make(
             $request->all(),
             [
-                'url' => 'required|string',
+                'url' => 'required|string|unique:links',
             ]
         );
         if ($validator->fails()) {
