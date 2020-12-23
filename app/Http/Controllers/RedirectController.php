@@ -9,6 +9,17 @@ use App\Models\Redirect;
 class RedirectController extends Controller
 {
 
+    /**
+     * Retorna todos os Links Juntamento com os links filhos
+     *  
+     * @return string JSON
+     */
+    public function get($id)
+    {
+        return response()->json(
+            Redirect::getRedirect($id)
+        );
+    }
 
     /**
      * Cria um novo Link de redirecionamento
@@ -31,6 +42,7 @@ class RedirectController extends Controller
      */
     public function update($id, Request $request)
     {
+        return $request;
 
         $update = new RedirectClass;
         return  $update->updateLink($id, $request);
@@ -59,9 +71,9 @@ class RedirectController extends Controller
         $link = new RedirectClass;
         $link = $link->redirectLink($route);
         if (isset($link)) {
-            return redirect()->route($link);
+            return $link;
         } else {
-            return response()->json(['message' => 'Rota inválida'], 404);
+            return response()->json(['message' => 'Rota não possue nenhum redirect válido'], 404);
         }
     }
 }

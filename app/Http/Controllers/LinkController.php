@@ -29,11 +29,11 @@ class LinkController extends Controller
      * @param Illuminate\Http\Request $request
      * @return string JSON
      */
-    public function update($id, Request $request)
+    public function update($id,Request $request)
     {
-
+        return $request;
         $update = new LinkClass;
-        return  $update->updateLink($id, $request);
+        return  $update->updateLink($id,$request);
     }
 
     /**
@@ -45,6 +45,6 @@ class LinkController extends Controller
     public function destroy($id)
     {
         Link::find($id)->delete();
-        return response()->json(['message'=>'Deletado com sucesso'], 200);
+        return response()->json(['message' => 'Deletado com sucesso'], 200);
     }
 }

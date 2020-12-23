@@ -28,6 +28,16 @@ class Redirect extends Model
     }
 
     /**
+     * Retorna Links filhos relacionado ao link pai pelo id
+     *  
+     * @return \App\Redirect
+     */
+    public static function getRedirect($id)
+    {
+        return Redirect::where('link_id', $id)->get();
+    }
+
+    /**
      * Cria um novo link de redirecionamento
      *  
      * @param array   $request
@@ -39,14 +49,14 @@ class Redirect extends Model
         Redirect::create($request)->link()->associate($link);
     }
 
-     /**
-     * Retorna Links filhos relacionado ao link pai
+    /**
+     * Retorna Links filhos relacionado ao link pai pela url
      *  
      * @return \App\Redirect
      */
     public static function getLink($url)
     {
-        return Redirect::where('url',$url)->with('redirect')->get();
+        return Redirect::where('url', $url)->with('redirect')->get();
     }
 
     /**
@@ -54,7 +64,8 @@ class Redirect extends Model
      *  
      * @param integer $id
      */
-    public static function decrementCount($id){
+    public static function decrementCount($id)
+    {
         Redirect::find($id)->decrement('count', 1);
     }
 }

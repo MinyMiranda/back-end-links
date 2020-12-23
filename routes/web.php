@@ -23,6 +23,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     });
 
     $router->group(['prefix' => 'redirects'], function () use ($router) {
+        $router->get('/{id}',  ['uses' => 'RedirectController@get']);
         $router->post('/store',  ['uses' => 'RedirectController@store']);
         $router->put('/update/{id}',  ['uses' => 'RedirectController@update']);
         $router->delete('/delete/{id}',  ['uses' => 'RedirectController@destroy']);

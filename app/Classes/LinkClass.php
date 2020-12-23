@@ -35,7 +35,7 @@ class LinkClass
      * @param Illuminate\Http\Request  $request
      * @return string JSON
      */
-    public function updateLink($id, $request)
+    public function updateLink($id,$request)
     {
         $validator = Validator::make(
             $request->all(),
@@ -46,7 +46,7 @@ class LinkClass
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
         }
-        Link::find($id)->update($request->all());
+        Link::find($request->id)->update($request->all());
         return response()->json(['message' => 'Succeso ao editar!'], 200);
     }
 }
