@@ -45,7 +45,8 @@ class RedirectClass
             [
                 'url' => 'required|string',
                 'count' => 'required|integer'
-            ]
+            ],
+           
         );
         if ($validator->fails()) {
             return response()->json(['message' => $validator->errors()], 400);
